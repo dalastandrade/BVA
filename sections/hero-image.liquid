@@ -1,0 +1,51 @@
+<style>
+    .hidden_desktop{
+      display: block;
+    }
+    .hidden_mobile {
+      display: none;
+    }
+    @media (min-width:768px){
+      .hidden_desktop{
+        display:none;
+      }
+      .hidden_mobile {
+        display: block;
+      }
+    }
+</style>
+
+<section class="image-test">
+<a href ="{{ section.settings.image_url }}">
+<img data-src="{{ section.settings.image | img_url:'master' }}" class="img-fluid hidden_mobile lazyload" alt="Responsive image">
+<img data-src="{{ section.settings.mobile_image | img_url:'master' }}" class="img-fluid hidden_desktop lazyload" alt="Responsive image">
+</a>
+</section>
+{% schema %}
+  {
+    "name": "Hero Image",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "url",
+        "id": "image_url",
+        "label": "URL"
+      },
+      {
+        "type": "image_picker",
+        "id": "mobile_image",
+        "label": "Banner Image"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero Image",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

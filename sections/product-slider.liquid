@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="homepage-product-slider">
+      {% for block in section.blocks  %}
+          <div class="col-lg">
+              {% assign product_item = all_products[block.settings.product] %}
+              <img src="{{ product_item.featured_image | img_url:'300x' }}" data-src="{{ product_item.featured_image | img_url:'500x' }}" class="img-fluid lazyload" alt="Responsive image">
+              {{ product_item.title }}
+          </div>
+      {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "New Arrivals",
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "type": "new-arrival",
+        "name": "New Arrival",
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Shop the look",
+        "category": "Collection"
+      }
+    ]
+  }
+{% endschema %}
+
+

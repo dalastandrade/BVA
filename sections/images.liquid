@@ -1,0 +1,42 @@
+<section class="image-test row">
+    {% for block in section.blocks %}
+<a href ="{{ block.settings.image_url }}" class="col-md">
+<img src="{{ block.settings.image | img_url:'master' }}" class="img-fluid" alt="Responsive image">
+</a>
+{% endfor %}
+</section>
+{% schema %}
+  {
+    "name": "Custom Image",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Custom Images"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "url",
+            "id": "image_url",
+            "label": "Image url"
+          }          
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Custom Images",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

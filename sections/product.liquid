@@ -1,0 +1,139 @@
+<section data-section-id="{{ section.id }}" data-section-type="product">
+  
+  <div class="container mt-4 col-11">
+    <div class="row">
+        <div class="col-md-7">
+
+          {%- assign current_variant = product.selected_or_first_available_variant -%}
+          {%- assign featured_image = current_variant.featured_image | default: product.featured_image -%}
+           {% comment %}
+<!-- Product Slider Start-->       
+            <div class="product-slider">
+              {% if product.images.size > 1 %}
+                  {% for image in product.images %}
+                    <div>
+                      <a href="{{ image.src | img_url: '480x480' }}" data-thumbnail-id="{{ image.id }}" data-product-single-thumbnail{% if featured_image == image %} aria-current="true"{% endif %}>
+                        <img class="img-fluid" src="{{ image.src | img_url: '800x600' }}" alt="{{ image.alt | escape }}">
+                      </a>
+                    </div>
+                  {% endfor %}
+              {% endif %}
+            </div>
+
+            <div class="product-slider-nav mt-4">
+                {% if product.images.size > 1 %}
+                    {% for image in product.images %}
+                        <img class="img-fluid px-3" width="50" src="{{ image.src | img_url: '200x150' }}" alt="{{ image.alt | escape }}">
+                    {% endfor %}
+                {% endif %} 
+            </div>
+<!-- Product Slider End-->   
+          {% endcomment %}
+
+<div class="row">
+    {% for media in product.media %}
+      {% if media.alt contains 'vimeo' %}
+        <div class="product-image col-6 p-1">
+          <video autoplay muted loop src="{{ media.alt }}" class="col-12 p-1" alt="{{ media.alt }}">
+        </div>
+      {% endif %}
+      {% case media.media_type %}
+          {% when 'image' %}
+            <div class="product-image col-6 p-1">
+              <img src="{{ media | img_url: 'master'}}" class="col-12 p-1" alt="{{ media.alt }}">
+            </div>
+          {% when 'external_video' %}
+            <div class="product-single__media col-6">
+              {{ media | external_video_tag }}
+            </div>
+          {% when 'video' %}
+            <div class="product-single__video col-6">
+              {{ media | video_tag: controls: true, autoplay: true}}
+            </div>
+          {% when 'model' %}
+            <div class="product-single__media col-6">
+              {{ media | model_viewer_tag }}
+            </div>
+          {% else %}
+            <div class="product-single__media col-6">
+              {{ media | media_tag }}
+            </div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+        </div> <!-- / col -->
+
+        <div class="col-md-5">
+          <div class="contailer">
+          <h2 class="product-category">{{product.type}}</h2>
+            <h1 id="productheader">{{ product.title }}</h1>
+           
+            <div data-price-wrapper class="my-2">
+                <span data-product-price>
+                  {{ current_variant.price | money }}
+                </span>
+          
+                {% if product.compare_at_price_max > product.price %}
+                  <span class="visually-hidden" data-compare-text>{{ 'products.product.regular_price' | t }}</span>
+                  <s data-compare-price>
+                    {% if current_variant.compare_at_price > current_variant.price %}
+                      {{ current_variant.compare_at_price | money }}
+                    {% endif %}
+                  </s>
+                {% endif %}
+            </div>
+            <div class="container col-10 ml-pl-zero">
+              <label>Colors</label>
+              {% comment %}
+              <div id="swatchsliders"></div>
+              {% endcomment %}
+              <div class="swatch-slider">          
+                {% assign collection = collections.all-products %}
+                {% paginate collection.products by 1000 %}
+                  <!-- This creates a variable to restrict the loop to return products with the same name as the product on the page visited -->
+                  {% assign productName = product.title %}
+                  {% for product in collection.products %}
+                    {% if product.title == productName %}
+                      <a href="{{ product.handle }}"  class="swatch-gallery">
+                        <img src="{{ product.images[0] | img_url }}" alt="{{product.name}}" width="60" title="" data-toggle="tooltip" data-placement="bottom" data-original-title="{% for product_option in product.options_with_values %}{% if product_option.name == 'Color' %}{{ product_option.values.first }}{% endif %}{% endfor %}" />
+                      </a>
+                    {% endif %}
+                  {% endfor %} 
+                {% endpaginate %}
+              </div>
+
+
+          </div>      
+
+          
+          
+            {% include 'product-form' %}
+          </div>
+          <div class="container">
+            <div class="rte">
+              {{ product.description }}
+            </div>
+          
+            {% if section.settings.show_share_buttons %}
+              {% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}
+            {% endif %}
+          </div>
+        </div> <!-- / col -->
+    </div> <!-- / row -->
+  </div>
+
+</section>
+
+{% schema %}
+  {
+    "name": "Product pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_share_buttons",
+        "label": "Show social sharing buttons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

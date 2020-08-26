@@ -1,0 +1,62 @@
+{% form 'product', product, data-product-form: '', data-product-handle: product.handle, data-enable-history-state: 'true' %}
+
+
+<label>Size</label>
+  <fieldset name="id" id="variant_id">
+    {%- for variant in product.variants -%}         
+    <input 
+      type="radio" 
+      id="{{ variant.id }}" 
+      v-model="form.id"
+      class="productSize"
+      hidden
+      value="{{ variant.id }}" 
+      {% unless variant.available %} disabled{% endunless %}
+      {% if product.selected_variant.id == variant.id %} checked{% endif %}
+    >
+    <label class="size-labels" for="{{ variant.id }}">{{ variant.option2 }}</label>
+    {%- endfor -%}
+  </fieldset>
+
+
+<noscript>
+  <select name="id">
+    {% for variant in product.variants %}
+      <option
+        {% if variant == current_variant %}selected="selected"{% endif %}
+        {% unless variant.available %}disabled="disabled"{% endunless %}
+        value="{{ variant.id }}">
+          {{ variant.title }}
+      </option>
+    {% endfor %}
+  </select>
+</noscript>
+
+<div class="form-group">
+    <div class="row align-items-end">
+
+      <div class="col-md-12">
+          <button
+            type="button"
+            @click="addToCart"
+            class="btn btn-primary"
+            name="add"
+            id="productAddToCart"
+            data-submit-button
+            disabled
+            {% unless current_variant.available %}disabled="disabled"{% endunless %}>
+              <span data-submit-button-text>
+                {% if current_variant.available %}
+                Select A Size
+                {% else %}
+                  {{ 'products.product.sold_out' | t }}
+                {% endif %}
+              </span>
+          </button>
+
+      </div>
+    </div>
+    
+
+</div>
+{% endform %}
