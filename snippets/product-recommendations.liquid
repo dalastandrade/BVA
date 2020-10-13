@@ -1,0 +1,16 @@
+
+  <div class="product-recommendations" data-product-id="{{ product.id }}" data-limit="4">
+      <h2>You may also like</h2>
+      <ul>
+        {%- for product in recommendations.products -%}
+        <li>
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.featured_image.alt }}" />
+            <p>{{ product.title }}</p>
+            <p>{{ product.price | money}}</p>
+          </a>
+        </li>
+        {%- endfor -%}
+      </ul>
+  </div>
+

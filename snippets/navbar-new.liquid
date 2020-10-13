@@ -1,0 +1,125 @@
+<nav class="navbar navbar-expand-lg  nav-desktop">
+  <div class="container-fluid">
+    <a class="navbar-brand nav-desktop" href="https://tlf-developers.myshopify.com">
+      {%include 'icon-tlf'%}
+    </a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto ml-auto">
+        {% for link in linklists[section.settings.menu].links %}
+        {% if link.links != blank %}
+
+        <li class="nav-item dropdown options" style="position:static;">
+          <a href="{{ link.url }}" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{ link.title }}
+          </a>
+          <div class="dropdown-menu w-100 childlink" aria-labelledby="navbarDropdown">
+            {% for childlink in link.links %}
+            {% if childlink.title == 'VIDEO' %}
+            <div class="col-md-2 col-sm-12">
+              {% for grandchildlink in childlink.links %}
+              <a href="{{ grandchildlink.url }}">
+                {% endfor %}
+                <video preload="metadata" class="img-fluid lazyload" autoplay loop>
+                  <source data-src="{{ childlink.url }}">
+                </video>
+              </a>
+            </div>
+            {% endif %}
+            {% endfor %}
+
+
+            <div class="col-md-2 col-sm-12">
+              <div class="flex-wrapped">
+                {% for childlink in link.links %}
+                {% if childlink.title == 'MEN' or childlink.title == 'WOMEN' or childlink.title == 'ACCESSORIES' %}
+
+                <div class="dropdown-item mega-menu">
+                  {{ childlink.title }}
+                </div>
+                <ul class="mega-menu-ul">
+                  {% for grandchildlink in childlink.links %}
+                  <li class="mega-menu-li"> <a href="{{ grandchildlink.url }}"
+                      class="site-nav__dropdown-link mega-menu">{{ grandchildlink.title | escape }}</a></li>
+                  {% endfor %}
+                </ul>
+
+
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+
+            {% for childlink in link.links %}
+            {% if childlink.title == 'CATEGORIES'  or childlink.title == 'COLLECTIONS'%}
+
+            <div class="col-md-2 col-sm-12">
+              <div class="dropdown-item mega-menu">
+                {{ childlink.title }}
+              </div>
+              <ul class="mega-menu-ul">
+                {% for grandchildlink in childlink.links %}
+                <li class="mega-menu-li"> <a href="{{ grandchildlink.url }}"
+                    class="site-nav__dropdown-link mega-menu">{{ grandchildlink.title | escape }}</a></li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a href="{{ link.url }}" class="nav-link">
+            {{ link.title }}
+          </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="space-evenly">
+      <div id="desktopCustomerAccountContainer">
+        <ul class="navbar-nav" id="customerAccountMain">
+          <a href="/account">
+            {% include 'icon-user'%}
+          </a>
+        </ul>
+      </div>
+      <div id="desktopWishContainer">
+        <ul class="navbar-nav" id="wishMain">
+          <a href="/products/tlf-air-flex-3-4-sleeve-training-t-shirt-black">
+            {% include 'icon-heart' %}
+          </a>
+        </ul>
+      </div>
+      <div id="desktopSearchContainer">
+        <ul class="navbar-nav" id="searchMain">
+          <a href="/products/tlf-axis-sports-bra-pewter">
+            {% include 'icon-search' %}
+          </a>
+        </ul>
+      </div>
+      <div id="desktopCartContainer">
+        <ul class="navbar-nav" id="cartMain">
+          <div class="page-wrapper-drawer">
+            <a id="show-cartDrawer">
+              {% include 'icon-cart' %}
+            </a>
+            {%include 'cart-slider'%}
+            <div id="overlay">
+              <div class="overlay-flex">
+              <!-- {% include 'product-recommendations' %} -->
+            </div>
+            </div>
+          </div>
+        </ul>
+      </div>
+
+
+      {% include 'sidebar-nav' %}
+    </div>
+  </div>
+
+</nav>

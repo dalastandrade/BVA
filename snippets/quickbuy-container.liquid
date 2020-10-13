@@ -1,0 +1,17 @@
+<div class="quickbuy-box">
+    <div class="quickbuy-overlay">
+        <h6 class="tlf-quick-buy">{% if product.available %}QUICK BUY{% else %}SOLD OUT{% endif %}</h6>
+        {% if product.options.size > 1 %}
+        <div class="select">
+            <div class="product-container" id="product-select-{{ product.id }}" name="id">
+                {% for variant in product.variants %}
+                <button class="add-to-cart btn quick-buy" {% if product.available %}style="visibility:visible" {%else%}
+                    style="visibility:hidden" {% endif %} value="{{ variant.id }}">{{ variant.option2 }}</button>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+        {% endif %}
+    </div>
+</div>

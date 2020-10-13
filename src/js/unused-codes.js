@@ -234,3 +234,160 @@ function handleScroll() {
 });
 
 {% endcomment %}
+
+
+/* var isMobile = Math.min(window.screen.width, window.screen.height) < 768 || navigator.userAgent.indexOf("Mobi") > -1;
+if(isMobile)
+mobileCart.appendChild(desktop-cart); 
+
+
+
+
+window.addEventListener('resize', navBarIconsPositions);
+
+window.onload = navBarIconsPositions();
+
+function navBarIconsPositions() {
+
+
+  var tabNav = document.getElementById('tabbar');
+  var cartTabDisplay = getComputedStyle(tabNav).display;
+  switch (true) {
+    case cartTabDisplay === 'block':
+      mobileCustomerAccount.appendChild(customerAccountMain)
+      mobileWishlist.appendChild(wishMain)
+      mobileSearch.appendChild(searchMain)
+      mobileCart.appendChild(cartMain)
+      break;
+
+    default:
+      desktopCustomerAccountContainer.appendChild(customerAccountMain);
+      desktopWishContainer.appendChild(wishMain);
+      desktopSearchContainer.appendChild(searchMain);
+      desktopCartContainer.appendChild(cartMain);
+  }
+}
+
+window.addEventListener('resize', navBarIconsPositions);
+toggld();
+window.onresize = function () {
+  toggld();
+}
+
+
+function toggld() {
+  let productSlider = document.getElementById("product-slider");
+  if (window.innerWidth < 768) {
+    mobileCustomerAccount.appendChild(customerAccountMain)
+    mobileWishlist.appendChild(wishMain)
+    mobileSearch.appendChild(searchMain)
+    mobileCart.appendChild(cartMain)
+    productSlider.style.display = "flex";
+    productSlider.style.overflowX = "scroll";
+    productSlider.style.width = "400px";
+  }
+  else {
+    productSlider.style.display = "flex";
+    productSlider.style.overflowX = "unset";
+    productSlider.style.width = "unset";
+    productSlider.style.flexWrap = "wrap";
+
+    desktopCustomerAccountContainer.appendChild(customerAccountMain);
+    desktopWishContainer.appendChild(wishMain);
+    desktopSearchContainer.appendChild(searchMain);
+    desktopCartContainer.appendChild(cartMain);
+  }
+}
+
+*/
+
+    
+   /*  $('video[id^="portfolio-vid"]').mouseover(function(){
+        $(this).get(0).play();
+    }).mouseout(function(){
+        $(this).get(0).pause();
+    })
+ */
+
+ /* window.onload = function() {
+  var i;
+  let x = document.getElementById('pages').innerHTML
+  for (i = 2; i <= x; i++) {
+    $.get('?page=' + i, function (data) {
+      var newElement = $(data).find('#Containerdemo').children();
+      mixer.append(newElement);
+    });
+    lazyMix();
+    videoPlay();
+  } 
+}; */
+
+/*  var userScroll = $(document).scrollTop();
+ var i = 2;
+ let x = document.getElementById('pages').innerHTML;
+
+ $(window).on('scroll', function() {
+    var newScroll = $(document).scrollTop();
+
+    if(userScroll - newScroll > 20 || newScroll - userScroll > 20){
+
+  if (i <= x) {
+    $.get('?page=' + i, function (data) {
+      var newElement = $(data).find('#Containerdemo').children();
+      mixer.append(newElement);
+      lazyMix();
+      videoPlay();
+    });
+    console.log(i);
+    return i = i + 1;
+  } 
+
+     }
+ }); */
+
+
+ /* 
+$(".dropdown").on("show.bs.dropdown", function(event){
+    $('#overlay').css('display', 'block');
+    $('body').css('overflow', 'hidden');
+  });
+
+  $(".dropdown").on("hide.bs.dropdown", function(event){
+    $('#overlay').css('display', 'none');
+    $('body').css('overflow', 'scroll');
+  });
+
+  $('#overlay').on("click", function (e) { 
+    $('#overlay').css('display', 'none');
+    $('body').css('overflow', 'scroll');
+    $('.dropdown-menu.mini-cart').removeClass('show'); 
+  });
+
+
+  $('#closeCartDrawer').on("click", function (e) { 
+    $('#overlay').css('display', 'none');
+    $('body').css('overflow', 'scroll');
+    $('.dropdown-menu.mini-cart').removeClass('show'); 
+  });
+
+
+
+  $(window).resize(function() {
+    if ($(window).width() < 768 || isMobile) {
+      $("#tabbar").show();
+      $('#desktop-navigation').hide();
+    }else{
+      $("#tabbar").hide();
+      $('#desktop-navigation').show();
+    }});
+    
+    if ($(window).width() < 768) {
+  $('#desktop-navigation').css("display", "none");
+  $('#mobile-navigation').css("display", "block");
+  $('#tabbar').css("display", "block");
+}
+else {
+  $('#desktop-navigation').css("display", "block");
+  $('#mobile-navigation').css("display", "none");
+  $('#tabbar').css("display", "none");
+}*/

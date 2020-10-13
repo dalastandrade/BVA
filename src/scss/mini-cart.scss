@@ -5,9 +5,19 @@
 
 
     .dropdown-menu{
-        min-width: 380px;
+        display: none;
+        position: fixed !important;
+        overflow: hidden;
+        -webkit-overflow-scrolling: touch;
+        top: 0;
         right: 0;
-        left: auto;
+        bottom: 0;
+        left: unset;
+        z-index: 30;
+        color: #000;
+        background-color: #fff;
+        overflow-y: auto;
+        padding: 0;
     }
 
     .title{
@@ -25,4 +35,46 @@
             }
         }
     }
+}
+
+.input-group-text.mini-cart {
+    padding: 0.075rem 0.55rem;
+}
+
+.form-control.mini-cart {
+    padding: 0;
+    text-align: center;
+}
+
+li.media {
+    padding: 20px 40px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.mini-cart.price {
+    margin-left: 5px;
+}
+
+.cart-checkout {
+    bottom: 0;
+    position: sticky;
+    background: white;
+    height: 300px;
+}
+
+.cart-checkout-ul {
+    padding:unset;
+}
+
+li.media.my-4.checkout {
+    margin-bottom:0;
+}
+.form-control.w-25.mini-cart {
+    font-size: 0.85rem;
+}
+
+#closeCartDrawer {
+    text-align: right;
+    cursor: pointer;
+    padding-top: 10px;
 }

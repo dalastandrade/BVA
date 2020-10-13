@@ -1,0 +1,156 @@
+.inline-table {
+    display: inline-table;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.footer-style {
+    padding: 20px;
+}
+
+.footer-gray {
+    background: #f0f1f3;
+}
+
+.footer-black {
+    background: #000;
+    color: white;
+}
+
+.footer-email {
+    display: table-caption;
+}
+
+.footer-email label {
+    font-size: 0.9em;
+}
+
+.footer-links {
+    text-align: right;
+    padding: 0 0 8px 0;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    color: #232323;
+    line-height: 2em;
+}
+
+.footer-title {
+    font-weight: 600;
+    color: #232323;
+}
+
+.footer-style .social-media-row {
+    padding-left: 0;
+}
+
+.footer-style .social-media-row li > a {
+    padding-right: 12px;
+}
+
+.footer-email a:hover {
+    text-decoration: none;
+}
+
+.input-placeholder input {
+    border: 0;
+    background: transparent;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+.input-placeholder input:focus {
+    outline: 0;
+}
+.input-placeholder {
+    background-color: #eee;
+    display: inline-flex;
+    padding: 5px;
+    border: 1px solid #b1a9a9;
+}
+
+.col-md-6.right {
+    text-align: -webkit-right;
+}
+
+.col-md-6.left {
+    text-align: -webkit-left;
+}
+
+input[type="text"] {
+    font-size: 0.9em;
+}
+
+@media screen and (max-width: 768px) {
+    .input-placeholder {
+        display: flex;
+    }
+
+    .redefine-impossible-logo {
+        width: 290px;
+    }
+
+    .footer-email {
+        display: block;
+        text-align: center;
+    }
+
+    .footer-sub {
+        text-align: center;
+    }
+
+    .footer-email p {
+        padding-bottom: 10px;
+        margin: 0;
+    }
+
+    .footer-dropdown-links {
+        padding: 0;
+    }
+
+    .row.w-100 {
+        display: contents;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .slider-shop-button a {
+        font-size: 0.7em;
+    }
+
+    .slider-title {
+        font-size: 1.2em;
+    }
+
+    .homepage-product-slider-container {
+        margin: 20px 0;
+    }
+
+    .social-media-row {
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    #cookieConsent {
+        background-color: #404040;
+        min-height: 90px;
+        font-size: 0.8em;
+        color: #E6E6E6;
+        line-height: 1.3em;
+        padding: 8px 0 8px 30px;
+        font-family: "Montserrat", Helvetica, sans-serif;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: none;
+        z-index: 9999;
+        text-align: left;
+        -webkit-box-pack: left;
+        align-items: baseline;
+    }
+}

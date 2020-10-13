@@ -1,0 +1,68 @@
+{% for link in linklists.main-menu.links %}
+{% if link.links != blank %}
+<div class="collapse navbar-collapse" id="navbarFilterToggle">
+
+
+
+
+  {% if current_tags contains "WOMENS" %}
+  {% if link.title == 'WOMEN' %}
+
+  {% for childlink in link.links %}
+  {% if childlink.title == 'COLLECTIONS' or childlink.title == 'CATEGORIES' or childlink.title == 'SIZE' or childlink.title == 'COLOR'%}
+  <div class="col-md-2 col-sm-12">
+    <div class="dropdown">
+      <button class="btn btn-black dropdown-toggle w-100" type="button" id="dropdownMenu2" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        {{ childlink.title }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+        {% for grandchildlink in childlink.links %}
+        <button class="dropdown-item" type="button" mixitup-control
+          data-toggle=".{{ grandchildlink.title | handleize | downcase }}">{{ grandchildlink.title | escape }}</button>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  <button type="button" class="col-md-2 col-sm-12 btn btn-reset" data-reset mixitup-control data-filter="all">RESET</button>
+  {% endif %}
+  {% endif %}
+
+  {% if current_tags contains "MENS" %}
+  {% if link.title == 'MEN' %}
+
+  {% for childlink in link.links %}
+  {% if childlink.title == 'COLLECTIONS' or childlink.title == 'CATEGORIES' or childlink.title == 'SIZE' or childlink.title == 'COLOR'%}
+  <div class="col-md-2 col-sm-12">
+    <div class="dropdown">
+      <button class="btn btn-black dropdown-toggle w-100" type="button" id="dropdownMenu2" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        {{ childlink.title }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+
+        {% for grandchildlink in childlink.links %}
+        <button class="dropdown-item" type="button" mixitup-control
+          data-toggle=".{{ grandchildlink.title | handleize | downcase }}">{{ grandchildlink.title | escape }}</button>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+  <button type="button" class="col-md-2 col-sm-12 btn btn-reset" data-reset mixitup-control data-filter="all">RESET</button>
+  {% endif %}
+  {% endif %}
+
+
+
+
+</div>
+
+{% endif %}
+{% endfor %}

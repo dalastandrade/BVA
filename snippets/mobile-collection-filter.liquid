@@ -1,0 +1,70 @@
+{% for link in linklists.main-menu.links %}
+{% if link.links != blank %}
+
+
+{% if current_tags contains "MENS" %}
+{% if link.title == 'MEN' %} 
+<li>
+  <a class="parent">
+      {{ link.title }}
+    <span>{% include 'icon-arrow-down' %}</span>
+  </a>
+  <ul>
+    {% for childlink in link.links %}
+    {% if childlink.title == 'COLLECTIONS' or childlink.title == 'CATEGORIES' or childlink.title == 'SIZE' or childlink.title == 'COLOR'%} 
+     <li>
+      <a class="parent child-title">
+       {{ childlink.title }}
+        <span>{% include 'icon-arrow-down' %}</span>
+      </a>
+      <ul>
+        {% for grandchildlink in childlink.links %}
+        <li>
+          <button mixitup-control data-toggle=".{{ grandchildlink.title | handleize | downcase }}" class="grandchild-title">
+            {{ grandchildlink.title | escape }}
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</li>
+{% endif %}
+{% endif %}
+
+{% if current_tags contains "WOMENS" %}
+{% if link.title == 'WOMEN' %} 
+<li>
+  <a class="parent">
+      {{ link.title }}
+    <span>{% include 'icon-arrow-down' %}</span>
+  </a>
+  <ul>
+    {% for childlink in link.links %}
+    {% if childlink.title == 'COLLECTIONS' or childlink.title == 'CATEGORIES' or childlink.title == 'SIZE' or childlink.title == 'COLOR'%} 
+    <li>
+      <a class="parent child-title">
+       {{ childlink.title }}
+        <span>{% include 'icon-arrow-down' %}</span>
+      </a>
+      <ul>
+        {% for grandchildlink in childlink.links %}
+        <li>
+          <button mixitup-control data-toggle=".{{ grandchildlink.title | handleize | downcase }}" class="grandchild-title">
+            {{ grandchildlink.title | escape }}
+          </button>
+        </li>
+        {% endfor %}
+      </ul>
+    </li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</li>
+{% endif %}
+{% endif %}
+
+{% endif %}
+{% endfor %}

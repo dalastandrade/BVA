@@ -1,5 +1,3 @@
-
-
 // Lazy loading
 import 'lazysizes';
 // import a plugin
@@ -7,8 +5,9 @@ import 'lazysizes/plugins/parent-fit/ls.parent-fit';
 
 import LazyLoad from 'vanilla-lazyload';
 var myLazyLoad = new LazyLoad({
-        elements_selector: '.lazyload'
+        elements_selector: '.lazyload',
 });
+
 export default myLazyLoad;
 
 import Vue from "vue";
@@ -41,6 +40,7 @@ require('./components/MiniCart.js');
 
 
 // javascript
+require('./homepage.js');
 require('./product.js');
 require('./header.js');
 require('./mixitup.js');

@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 footer-style footer-black">
+            <div class="footer-email">
+                <p>Subsribe to our newsletter</p>
+                <a href="javascript:void(0);" onclick="openModal();">
+                    <div class="input-placeholder">
+                        <input class="col-lg-3 col-md-3 col-sm-11 col-xs-11" type="text" name="newsletterSignup"
+                            readonly="readonly" placeholder="What's your email?" />
+                        <span>{% include 'icon-caret-right'%}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-12 footer-style">
+            <div class="footer-sub">
+                {% include 'icon-redefine-impossible'%}
+            </div>
+        </div>
+        <ul id="footerMenu" class="col-12 footer-style footer-gray">
+            {% for link in linklists[section.settings.footer_linklist_1].links %}
+            {% if link.links != blank %}
+            <li>
+                <a class="parent">{{ link.title }}
+                    <span>{% include 'icon-arrow-down'%}</span>
+                </a>
+                <ul class="footer-dropdown-links">
+                    {% for childlink in link.links %}
+                    <li>
+                        <a class="parent child-title">
+                            {{ childlink.title }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+<div class="text-center">
+    {% include 'social-media-icons' %}
+    <div class="page-width default-margin">
+    
+        <p class="footer-text-mobile">&copy; {{ 'now' | date: "%Y" }} All Rights Reserved.</p>    
+        <p class="footer-text-mobile"><b>Take Life Further</b></p>   
+        <p class="footer-text-mobile"><a href="/pages/privacy-policy">Privacy Policy</a>  | <a href="/pages/terms-conditions">Terms and Conditions</a></p>
+      </div>
+</div>

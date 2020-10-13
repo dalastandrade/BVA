@@ -53986,6 +53986,8 @@ __webpack_require__(/*! ./components/CartForm.js */ "./src/js/components/CartFor
 __webpack_require__(/*! ./components/MiniCart.js */ "./src/js/components/MiniCart.js"); // javascript
 
 
+__webpack_require__(/*! ./homepage.js */ "./src/js/homepage.js");
+
 __webpack_require__(/*! ./product.js */ "./src/js/product.js");
 
 __webpack_require__(/*! ./header.js */ "./src/js/header.js");
@@ -54263,11 +54265,15 @@ if (document.querySelector('.shopify-product-form')) {
           // $('.mini-cart').dropdown('show');
 
 
+          _this.onCartOpen();
+
           _this.closeMiniCart();
 
+          $('#overlay').addClass('block-display');
+          $('#tlf').css('overflow', 'hidden');
           new Noty({
             type: 'success',
-            timeout: 3000,
+            timeout: 1500,
             layout: 'topRight',
             text: 'Product added to cart!'
           }).show();
@@ -54279,6 +54285,9 @@ if (document.querySelector('.shopify-product-form')) {
             text: 'Some notification text'
           }).show();
         });
+      },
+      onCartOpen: function onCartOpen() {
+        $(".page-wrapper-drawer").addClass("toggled");
       },
       closeMiniCart: function closeMiniCart() {
         // fix for boostrap dropdown javascript opening and closing
@@ -54307,6 +54316,31 @@ Vue.filter('money', function (value) {
 
 /***/ }),
 
+/***/ "./src/js/functions.js":
+/*!*****************************!*\
+  !*** ./src/js/functions.js ***!
+  \*****************************/
+/*! exports provided: onCartOpen, closeMiniCart */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onCartOpen", function() { return onCartOpen; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "closeMiniCart", function() { return closeMiniCart; });
+function onCartOpen() {
+  $(".page-wrapper-drawer").addClass("toggled");
+  $('#overlay').addClass('block-display');
+}
+function closeMiniCart() {
+  // fix for boostrap dropdown javascript opening and closing
+  $('.mini-cart').addClass('show');
+  $('.mini-cart .dropdown-menu').addClass('show');
+  $('.mini-cart .dropdown-item-text').removeClass('show');
+  $('#overlay').removeClass('block-display');
+}
+
+/***/ }),
+
 /***/ "./src/js/header.js":
 /*!**************************!*\
   !*** ./src/js/header.js ***!
@@ -54318,6 +54352,157 @@ Vue.filter('money', function (value) {
 $('body').on("click", ".dropdown-menu", function (e) {
   $(this).parent().is(".show") && e.stopPropagation();
 });
+/* 
+import CC from "CookieConsent"
+window.addEventListener("load", function(){
+
+    window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#237afc",
+        },
+        "button": {
+          "background": "transparent", 
+          "border": "#fff",
+          "text": "#fff",
+          "padding": '5px 40px' 
+        }
+      },
+      "type": "info",
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "href": "https://cookieconsent.insites.com"
+      }
+    })}); */
+
+if (localStorage.getItem('cookies_enabled') === null) {
+  setTimeout(function () {
+    $("#cookieConsent").fadeIn(700);
+    $("#cookieConsent").css("display", "flex");
+  }, 1000);
+  $(".cookieConsentOK").click(function () {
+    localStorage.setItem('cookies_enabled', '1');
+    $("#cookieConsent").fadeOut(700);
+  });
+}
+
+if (localStorage.getItem('cookies_enabled') === '1') {
+  $("#cookieConsent").css("display", "none");
+}
+
+/***/ }),
+
+/***/ "./src/js/homepage.js":
+/*!****************************!*\
+  !*** ./src/js/homepage.js ***!
+  \****************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+window.addEventListener("orientationchange", function (event) {
+  if (window.innerWidth > 768) {
+    var slideIndex;
+    var prevSlide;
+    var i;
+    var nextSlide;
+    var i;
+
+    (function () {
+      var plusSlides = function plusSlides(n) {
+        showSlides(slideIndex += n);
+      };
+
+      var currentSlide = function currentSlide(n) {
+        showSlides(slideIndex = n);
+      };
+
+      var showSlides = function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+
+        slides[slideIndex - 1].style.display = "block";
+      };
+
+      slideIndex = 1;
+      showSlides(slideIndex);
+      setInterval(function () {
+        plusSlides(1);
+      }, 5000);
+      prevSlide = document.querySelectorAll(".prev-text"); // this element contains more than 1 DOMs.
+
+      for (i = 0; i < prevSlide.length; i++) {
+        prevSlide[i].onclick = function () {
+          plusSlides(-1);
+        };
+      }
+
+      nextSlide = document.querySelectorAll(".next-text"); // this element contains more than 1 DOMs.
+
+      for (i = 0; i < nextSlide.length; i++) {
+        nextSlide[i].onclick = function () {
+          plusSlides(1);
+        };
+      }
+    })();
+  }
+});
+menuInit();
+$('#menu').find('li').has('ul').children('a').on('click', dropdownMenuFunctions);
+$('#footerMenu').find('li').has('ul').children('a').on('click', dropdownMenuFunctions);
+$('#collectionMenu').find('li').has('ul').children('a').on('click', dropdownMenuFunctions);
+$("#show-sidebar").on('click', togglePageWrapper);
+$("#close-sidebar").on('click', removeTogglePageWrapper);
+$("#show-cartDrawer").on('click', function () {
+  $(this).parent().addClass("toggled");
+  $("#overlay").addClass("block-display");
+  $('#tlf').css('overflow', 'hidden');
+});
+$("#close-cartDrawer").on('click', function () {
+  $(this).parent().parent().parent().parent().removeClass("toggled");
+  $("#overlay").removeClass("block-display");
+  $('#tlf').css('overflow', 'scroll');
+});
+$("#overlay").on('click', function () {
+  $("#close-cartDrawer").parent().parent().parent().parent().removeClass("toggled");
+  $(this).removeClass("block-display");
+  $('#tlf').css('overflow', 'scroll');
+});
+$("#show-help").on('click', togglePageWrapper);
+$("#close-help").on('click', removeTogglePageWrapper);
+$("#show-collection-nav").on('click', togglePageWrapper);
+$("#close-collection-nav").on('click', removeTogglePageWrapper);
+
+function togglePageWrapper() {
+  $(this).parent().addClass("toggled");
+}
+
+function removeTogglePageWrapper() {
+  $(this).parent().parent().parent().parent().removeClass("toggled");
+}
+
+function dropdownMenuFunctions() {
+  $(this).parent('li').toggleClass('open').children('ul').collapse('toggle');
+  $(this).children('span').toggleClass('rotate');
+  $(this).parent('li').siblings().removeClass('open').children('ul.in').collapse('hide');
+}
+
+function menuInit() {
+  $('#menu li').not('.active').has('ul').children('ul').addClass('collapse');
+  $('#footerMenu li').not('.active').has('ul').children('ul').addClass('collapse');
+  $('#collectionMenu li').not('.active').has('ul').children('ul').addClass('collapse');
+}
 
 /***/ }),
 
@@ -54325,10 +54510,20 @@ $('body').on("click", ".dropdown-menu", function (e) {
 /*!***************************!*\
   !*** ./src/js/mixitup.js ***!
   \***************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vanilla-lazyload */ "./node_modules/vanilla-lazyload/dist/lazyload.min.js");
+/* harmony import */ var vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _shared_cartData_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./shared/cartData.js */ "./src/js/shared/cartData.js");
+/* harmony import */ var _functions_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./functions.js */ "./src/js/functions.js");
 var mixitup = __webpack_require__(/*! mixitup */ "./node_modules/mixitup/dist/mixitup.js");
+
+
+
+
 
 var mixitupPagination = __webpack_require__(/*! ./pagination.js */ "./src/js/pagination.js");
 
@@ -54339,127 +54534,300 @@ var currentLimit = 20;
 var incrementAmount = 20;
 var canLoadMore = true;
 var scrollThreshold = 50;
-var i;
-var x = document.getElementById('pages').innerHTML;
 
-for (i = 2; i <= x; i++) {
-  $.get('?page=' + i, function (data) {
-    var newElement = $(data).find('#Containerdemo').children();
-    mixer.append(newElement);
-  });
-}
+if (window.location.href.indexOf("collection") > -1) {
+  var lazyMix = function lazyMix() {
+    function mouseoverHandler(event) {
+      var product = event.currentTarget;
+      var lazyImg = product.querySelector(".lazy-hover");
 
-function throttle(fn, interval) {
-  var timeoutId = -1;
-  var last = -1;
-  return function () {
-    var self = this;
-    var args = arguments;
-    var now = Date.now();
-    var difference = last ? now - last : Infinity;
+      if (!!lazyImg.getAttribute("data-ll-status")) {
+        return;
+      }
 
-    var later = function later() {
-      last = now;
-      fn.apply(self, args);
-    };
+      vanilla_lazyload__WEBPACK_IMPORTED_MODULE_0___default.a.load(lazyImg);
+    }
 
-    if (!last || difference >= interval) {
-      later();
-    } else {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(later, interval - difference);
+    function nodeSetToArray(nodeSet) {
+      return Array.prototype.slice.call(nodeSet);
+    }
+
+    function initializeMouseBehaviour() {
+      var products = document.querySelectorAll(".reveal");
+      nodeSetToArray(products).forEach(function (product) {
+        product.addEventListener('mouseover', mouseoverHandler, true);
+      });
+    }
+
+    initializeMouseBehaviour();
+    killQuickBuy();
+    enableQuickBuy();
+    quickBuyMobile();
+  };
+
+  var buyNow = function buyNow() {
+    console.log(this.getAttribute('value'));
+    var variantID = this.getAttribute('value');
+    axios.post('/cart/add.js', {
+      quantity: 1,
+      id: variantID
+    }).then(function (response) {
+      // add data to mini cart object
+      // check if product already exist
+      var found = _shared_cartData_js__WEBPACK_IMPORTED_MODULE_1__["store"].state.cartData[0].items.find(function (product) {
+        return product.variant_id == response.data.variant_id;
+      });
+
+      if (found) {
+        found.quantity++; // you can reset the quanity back to 1 if you want
+        // this.form.quantity = 1;
+      } else {
+        // add item at the start of array
+        _shared_cartData_js__WEBPACK_IMPORTED_MODULE_1__["store"].state.cartData[0].items.unshift(response.data);
+      } // open mini cart
+      // $('.mini-cart').dropdown('show');
+
+
+      Object(_functions_js__WEBPACK_IMPORTED_MODULE_2__["onCartOpen"])();
+      Object(_functions_js__WEBPACK_IMPORTED_MODULE_2__["closeMiniCart"])();
+      $('#overlay').addClass('block-display');
+      $('#tlf').css('overflow', 'hidden');
+      new Noty({
+        type: 'success',
+        timeout: 1500,
+        layout: 'topRight',
+        text: 'Product added to cart!'
+      }).show();
+    });
+  };
+
+  var killQuickBuy = function killQuickBuy() {
+    var buttons = document.querySelectorAll(".quick-buy");
+
+    for (var aa = 0; aa < buttons.length; aa++) {
+      buttons[aa].removeEventListener('click', buyNow);
     }
   };
-}
-/**
-  * Checks if we are within the scroll threshold on each
-  * scroll event, and if so, increments the page limit.
-  *
-  * @return {void}
-  */
+
+  var enableQuickBuy = function enableQuickBuy() {
+    var buttons = document.querySelectorAll(".quick-buy");
+
+    for (var aa = 0; aa < buttons.length; aa++) {
+      buttons[aa].addEventListener('click', buyNow);
+    }
+  };
+
+  /* function videoPlay() {
+    //--- select all <video> on the page
+    const vids = document.getElementsByTagName('video');
+    // Loop over the selected elements and add event listeners
+    for (let i = 0; i < vids.length; i++) {
+  
+      vids[i].addEventListener('mouseout', function (e) {
+        vids[i].pause();
+      })
+      vids[i].addEventListener('mouseover', function (e) {
+        var isPlaying = vids[i].currentTime > 0 && !vids[i].paused && !vids[i].ended
+          && vids[i].readyState > 2;
+  
+        if (!isPlaying) {
+          vids[i].play();
+        }
+      })
+    }
+  } */
+  var videoPlay = function videoPlay() {
+    //--- select all <video> on the page
+    var reveal = document.querySelectorAll('.reveal');
+
+    var endPlay = function endPlay(e) {
+      if (this.children[3].getElementsByTagName('video')[0] != null) {
+        if (this.children[3].getElementsByTagName('video')[0].play) {
+          this.children[3].getElementsByTagName('video')[0].pause();
+        }
+      }
+    };
+
+    var playVideo = function playVideo(e) {
+      if (this.children[3].getElementsByTagName('video')[0] != null) {
+        if (this.children[3].getElementsByTagName('video')[0].pause) {
+          this.children[3].getElementsByTagName('video')[0].play();
+        }
+      }
+    }; // Loop over the selected elements and add event listeners
 
 
-function handleScroll() {
-  if (mixer.isMixing() || !canLoadMore) return;
-  var scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-  var offset = scrollTop + window.innerHeight;
-  var containerHeight = containerEl.offsetHeight;
+    for (var _i = 0; _i < reveal.length; _i++) {
+      reveal[_i].addEventListener('mouseover', playVideo);
 
-  if (offset >= containerHeight - scrollThreshold) {
-    incrementPageLimit();
+      reveal[_i].addEventListener('mouseout', endPlay);
+
+      reveal[_i].addEventListener('click', playVideo);
+    }
+  };
+
+  var quickBuyMobile = function quickBuyMobile() {
+    $(".mobile-quickbuy").on('click', function () {
+      $(this).parent().find("#quickBuy").children().toggleClass("opacity");
+    });
+  };
+
+  var loadAllProducts = function loadAllProducts() {
+    var i;
+    var x = document.getElementById('pages').innerHTML;
+
+    for (i = 2; i <= x; i++) {
+      $.get('?page=' + i, function (data) {
+        var newElement = $(data).find('#Containerdemo').children();
+        mixer.append(newElement);
+        lazyMix();
+        videoPlay();
+      });
+    }
+  };
+
+  var throttle = function throttle(fn, interval) {
+    var timeoutId = -1;
+    var last = -1;
+    return function () {
+      var self = this;
+      var args = arguments;
+      var now = Date.now();
+      var difference = last ? now - last : Infinity;
+
+      var later = function later() {
+        last = now;
+        fn.apply(self, args);
+      };
+
+      if (!last || difference >= interval) {
+        later();
+      } else {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(later, interval - difference);
+      }
+    };
+  };
+  /**
+    * Checks if we are within the scroll threshold on each
+    * scroll event, and if so, increments the page limit.
+    *
+    * @return {void}
+    */
+
+
+  var handleScroll = function handleScroll() {
+    if (mixer.isMixing() || !canLoadMore) return;
+    var scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    var offset = scrollTop + window.innerHeight;
+    var containerHeight = containerEl.offsetHeight;
+
+    if (offset >= containerHeight - scrollThreshold) {
+      incrementPageLimit();
+    }
+  };
+  /**
+    * Shows a set number of new targets at the bottom of
+    * the page by incrementing the page limit.
+    *
+    * @return {void}
+    */
+
+
+  var incrementPageLimit = function incrementPageLimit() {
+    currentLimit += incrementAmount;
+    mixer.paginate({
+      limit: currentLimit
+    });
+  };
+  /**
+    * Check whether the current matching collection of target
+    * elements has additional hidden elements, and set the
+    * `canLoadMore` flag accordingly.
+    *
+    * @param {mixitup.State} state
+    * @return {void}
+    */
+
+
+  var handleMixEnd = function handleMixEnd(state) {
+    // At the end of each operation, we must check whether the current
+    // matching collection of target elements has additional hidden
+    // elements, and set the `canLoadMore` flag accordingly.
+    if (state.activePagination.limit + incrementAmount >= state.totalMatching) {
+      canLoadMore = false;
+    } else {
+      canLoadMore = true;
+    }
+
+    setTimeout(handleScroll, 10);
+  };
+
+  enableQuickBuy();
+  quickBuyMobile();
+
+  if (window.innerWidth < 768) {
+    var userScroll = $(document).scrollTop();
+    var i = 2;
+    var x = document.getElementById('pages').innerHTML;
+    $(window).on('scroll', function () {
+      var newScroll = $(document).scrollTop();
+
+      if (userScroll - newScroll > 20 || newScroll - userScroll > 20) {
+        if (i <= x) {
+          $.get('?page=' + i, function (data) {
+            var newElement = $(data).find('#Containerdemo').children();
+            mixer.append(newElement);
+            lazyMix();
+            videoPlay();
+            quickBuyMobile();
+          });
+          console.log(i);
+          return i = i + 1;
+        }
+      }
+    });
+  } else {
+    window.onload = function () {
+      loadAllProducts();
+    };
   }
-}
-/**
-  * Shows a set number of new targets at the bottom of
-  * the page by incrementing the page limit.
-  *
-  * @return {void}
-  */
 
+  var mixer = mixitup(containerEl, {
+    selectors: {
+      control: '[mixitup-control]'
+    },
+    controls: {
+      enable: true,
+      toggleLogic: 'and'
+    },
+    pagination: {
+      limit: 20,
+      loop: true
+    }
+  });
+  window.addEventListener('scroll', throttle(handleScroll, 50));
+  var selectedFilters = [];
+  $('[mixitup-control]').on('click', function (e) {
+    e.preventDefault();
 
-function incrementPageLimit() {
-  currentLimit += incrementAmount;
-  mixer.paginate({
-    limit: currentLimit
+    if (selectedFilters.indexOf($(this).data('toggle')) !== -1) {
+      var itemArray = selectedFilters.indexOf($(this).data('toggle'));
+      var slicedArray = selectedFilters.slice($(this).data('toggle'), itemArray);
+      document.querySelector("#loop").innerHTML = slicedArray;
+      selectedFilters = slicedArray;
+      return selectedFilters;
+    } else {
+      selectedFilters.push($(this).data('toggle'));
+      document.querySelector("#loop").innerHTML = selectedFilters.sort().join(" ");
+    }
+  });
+  $('[data-reset]').on('click', function (e) {
+    e.preventDefault();
+    document.querySelector("#loop").innerHTML = "";
+    return selectedFilters = [];
   });
 }
-/**
-  * Check whether the current matching collection of target
-  * elements has additional hidden elements, and set the
-  * `canLoadMore` flag accordingly.
-  *
-  * @param {mixitup.State} state
-  * @return {void}
-  */
-
-
-function handleMixEnd(state) {
-  // At the end of each operation, we must check whether the current
-  // matching collection of target elements has additional hidden
-  // elements, and set the `canLoadMore` flag accordingly.
-  if (state.activePagination.limit + incrementAmount >= state.totalMatching) {
-    canLoadMore = false;
-  } else {
-    canLoadMore = true;
-  }
-
-  setTimeout(handleScroll, 10);
-}
-
-var mixer = mixitup(containerEl, {
-  selectors: {
-    control: '[mixitup-control]'
-  },
-  controls: {
-    enable: true,
-    toggleLogic: 'and'
-  },
-  pagination: {
-    limit: 20,
-    loop: true
-  }
-});
-window.addEventListener('scroll', throttle(handleScroll, 50));
-var selectedFilters = [];
-$('[mixitup-control]').on('click', function (e) {
-  e.preventDefault();
-
-  if (selectedFilters.indexOf($(this).data('toggle')) !== -1) {
-    var itemArray = selectedFilters.indexOf($(this).data('toggle'));
-    var slicedArray = selectedFilters.slice($(this).data('toggle'), itemArray);
-    document.querySelector("#loop").innerHTML = slicedArray;
-    selectedFilters = slicedArray;
-    return selectedFilters;
-  } else {
-    selectedFilters.push($(this).data('toggle'));
-    document.querySelector("#loop").innerHTML = selectedFilters.sort().join(" ");
-  }
-});
-$('[data-reset]').on('click', function (e) {
-  e.preventDefault();
-  document.querySelector("#loop").innerHTML = "";
-  return selectedFilters = [];
-});
 
 /***/ }),
 
@@ -56215,59 +56583,88 @@ $('[data-reset]').on('click', function (e) {
 
 var slick = __webpack_require__(/*! slick-carousel */ "./node_modules/slick-carousel/slick/slick.js");
 
-$(".product-slider").slick({
-  // normal options...
-  infinite: true,
-  arrows: true,
-  slidesToShow: 1,
-  asNavFor: '.product-slider-nav',
-  prevArrow: "<button type='button' class='slick-prev'><svg viewbox='0 0 100 100'><path class='arrow' d='M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z' transform=' translate(15,0)'></svg></button>",
-  nextArrow: "<button type='button' class='slick-next'><svg viewbox='0 0 100 100'><path class='arrow' d='M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z ' transform='translate(85,100) rotate(180) '></svg></button>"
-});
-$(".product-slider-nav").slick({
-  // normal options...
-  infinite: true,
-  arrows: false,
-  slidesToShow: 3,
-  asNavFor: '.product-slider',
-  slidesToScroll: 1,
-  centerMode: true,
-  focusOnSelect: true
-});
-$(".homepage-product-slider").slick({
-  infinite: true,
-  arrows: true,
-  slidesToShow: 3,
-  lazyLoad: 'ondemand',
-  prevArrow: "<button type='button' class='slick-prev'><svg viewbox='0 0 100 100'><path class='arrow' d='M 25,0 L 30,5 L 10,25 L 30,45 L 25,50 L 0,25 Z ' transform='  translate(30, 25)'></svg></button>",
-  nextArrow: "<button type='button' class='slick-next'><svg viewbox='0 0 100 100'><path class='arrow' d='M 25,0 L 30,5 L 10,25 L 30,45 L 25,50 L 0,25 Z  ' transform='translate(70,80) rotate(180) '></svg></button>"
-});
-$(".swatch-slider").slick({
-  infinite: false,
-  arrows: true,
-  slidesToShow: 5,
-  slidesToScroll: 5,
-  prevArrow: "<div class='prev-next-button previous'><svg viewbox='0 0 100 100'><path class='arrow' d='M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z' transform=' translate(15,0)'></svg></div>",
-  nextArrow: "<div class='prev-next-button next'><svg viewbox='0 0 100 100'><path class='arrow' d='M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z 'transform='translate(85,100) rotate(180) '></svg></div>",
-  variableWidth: true
-}); // Select A Size
+if (window.location.href.indexOf("products") > -1) {
+  var addToCartSelectSize = function addToCartSelectSize() {
+    atc.disabled = false;
+    atc.innerHTML = "Add To Cart";
+  }; // Product Tooltip
 
-var atc = document.getElementById('productAddToCart');
-var sizeSelect = document.getElementsByClassName('productSize');
-var x;
 
-for (x = 0; x < sizeSelect.length; x++) {
-  sizeSelect[x].checked = false;
-  sizeSelect[x].addEventListener("click", addToCart);
+  $(".swatch-slider").slick({
+    infinite: false,
+    arrows: true,
+    slidesToShow: 5,
+    slidesToScroll: 4,
+    prevArrow: "<div class='prev-next-button previous'><svg viewbox='0 0 100 100'><path class='arrow' d='M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z' transform=' translate(15,0)'></svg></div>",
+    nextArrow: "<div class='prev-next-button next'><svg viewbox='0 0 100 100'><path class='arrow' d='M 50,0 L 60,10 L 20,50 L 60,90 L 50,100 L 0,50 Z 'transform='translate(85,100) rotate(180) '></svg></div>",
+    variableWidth: true,
+    responsive: [{
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4
+      }
+    }, {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 2
+      }
+    }, {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 2
+      }
+    } // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+    ]
+  }); // Select A Size
+
+  var atc = document.getElementById('productAddToCart');
+  var sizeSelect = document.getElementsByClassName('productSize');
+  var x;
+
+  for (x = 0; x < sizeSelect.length; x++) {
+    sizeSelect[x].checked = false;
+    sizeSelect[x].addEventListener("click", addToCartSelectSize);
+  }
+
+  jQuery("[data-toggle='tooltip']").tooltip();
+  var lastClick;
+  var accordianActions = document.querySelectorAll('[data-accordian-action]');
+  var accordianTargets = document.querySelectorAll('[data-accordian-target]');
+
+  var hideTargets = function hideTargets() {
+    for (var i = 0; i < accordianTargets.length; i++) {
+      var accordianTarget = accordianTargets[i];
+      accordianTarget.style.display = 'none';
+    }
+  };
+
+  var showTarget = function showTarget(targetSelector) {
+    var target = document.querySelector(targetSelector);
+    target.style.display = 'block';
+  };
+
+  hideTargets();
+
+  for (var i = 0; i < accordianActions.length; i++) {
+    var accordianAction = accordianActions[i];
+    accordianAction.addEventListener('click', function (e) {
+      e.preventDefault();
+      hideTargets();
+
+      if (lastClick !== e.currentTarget) {
+        showTarget(e.currentTarget.getAttribute('href'));
+        lastClick = e.currentTarget;
+      } else {
+        lastClick = null;
+      }
+    });
+  }
 }
-
-function addToCart() {
-  atc.disabled = false;
-  atc.innerHTML = "Add To Cart";
-} // Product Tooltip
-
-
-jQuery("[data-toggle='tooltip']").tooltip({});
 
 /***/ }),
 

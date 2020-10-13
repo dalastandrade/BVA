@@ -1,51 +1,48 @@
-<style>
-    .hidden_desktop{
-      display: block;
-    }
-    .hidden_mobile {
-      display: none;
-    }
-    @media (min-width:768px){
-      .hidden_desktop{
-        display:none;
-      }
-      .hidden_mobile {
-        display: block;
-      }
-    }
-</style>
 
-<section class="image-test">
-<a href ="{{ section.settings.image_url }}">
-<img data-src="{{ section.settings.image | img_url:'master' }}" class="img-fluid hidden_mobile lazyload" alt="Responsive image">
-<img data-src="{{ section.settings.mobile_image | img_url:'master' }}" class="img-fluid hidden_desktop lazyload" alt="Responsive image">
-</a>
+<section>
+  <a href="{{ section.settings.image_url }}">
+    <div class="desktop-display lazy-padding-desktop-banner">
+      <img
+        data-srcset="{{ section.settings.image | img_url:'1200x' }} 1200w, {{ section.settings.image | img_url:'1600x' }} 1600w"
+        src="data:image/svg+xml,%3Csvg 
+xmlns='http://www.w3.org/2000/svg' 
+viewBox='0 0 3 2'%3E%3C/svg%3E" class="img-fluid desktop-display lazyload lazy-absolute" alt="Responsive image">
+    </div>
+    <div class="mobile-display lazy-padding-mobile-banner">
+      <img data-srcset="
+              {{ section.settings.mobile_image |  img_url: '400x' }} 400w,
+              {{ section.settings.mobile_image |  img_url: '640x' }} 640w
+              " src="data:image/svg+xml,%3Csvg 
+xmlns='http://www.w3.org/2000/svg' 
+viewBox='0 0 3 2'%3E%3C/svg%3E" class="img-fluid mobile-display lazyload lazy-absolute" alt="Responsive image">
+    </div>
+  </a>
 </section>
 {% schema %}
-  {
-    "name": "Hero Image",
-    "settings": [
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
-      },
-      {
-        "type": "url",
-        "id": "image_url",
-        "label": "URL"
-      },
-      {
-        "type": "image_picker",
-        "id": "mobile_image",
-        "label": "Banner Image"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Hero Image",
-        "category": "Image"
-      }
-    ]
-  }
+{
+"name": "Hero Image",
+"settings": [
+{
+"type": "image_picker",
+"id": "image",
+"label": "Image"
+},
+{
+"type": "url",
+"id": "image_url",
+"label": "URL"
+},
+{
+"type": "image_picker",
+"id": "mobile_image",
+"label": "Banner Image"
+}
+],
+"presets": [
+{
+"name": "Hero Image",
+"category": "Image"
+}
+]
+}
 {% endschema %}

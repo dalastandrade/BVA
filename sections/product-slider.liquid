@@ -1,12 +1,41 @@
-<div class="container">
-    <div class="homepage-product-slider">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 left col-6">
+      <h1 class="product-carousel slider-title">{{ section.settings.header }}</h1>
+      <div class="mobile-display">
+        {% include 'swipe-arrows-right' %}
+      </div>
+    </div>
+    <div class="col-md-6 right col-6">
+      <button class="slider-shop-button"><a href="{{ section.settings.url }}">{{ section.settings.urlText }}</a></button>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+      <div id="product-slider">
       {% for block in section.blocks  %}
-          <div class="col-lg">
+          <div class="homepage">
               {% assign product_item = all_products[block.settings.product] %}
-              <img src="{{ product_item.featured_image | img_url:'300x' }}" data-src="{{ product_item.featured_image | img_url:'500x' }}" class="img-fluid lazyload" alt="Responsive image">
-              {{ product_item.title }}
+              <a href="{{ product_item.url }}">
+                <div class="lazy-padding">
+              <img src="data:image/svg+xml,%3Csvg 
+              xmlns='http://www.w3.org/2000/svg' 
+              viewBox='0 0 3 2'%3E%3C/svg%3E" 
+              data-srcset="
+              {{ product_item.featured_image |  img_url: '340x' }} 340w,
+              {{ product_item.featured_image |  img_url: '440x' }} 440w,
+              "
+              data-src="{{ product_item.featured_image |  img_url: '100x' }}"
+              class="img-fluid lazyload lazy-absolute" alt="Responsive image">
+                </div>
+              <p class="product-carousel product-title">{{ product_item.title }}</p>
+              <p class="product-carousel product-color">{% for product_option in product_item.options_with_values %}{% if product_option.name == 'Color' %}{{ product_option.values.first }}{% endif %}{% endfor %}</p>
+              <p class="product-carousel product-price">{{ product_item.price | money }}</p>
+              </a>
           </div>
       {% endfor %}
+    </div>
     </div>
 </div>
 
@@ -14,6 +43,26 @@
 {
     "name": "New Arrivals",
     "max_blocks": 4,
+    "class" : "homepage-product-slider-container",
+    "settings": [
+      {
+        "id": "header",
+        "type": "text",
+        "label": "Header",
+        "default": "Collection"
+      },
+      {
+        "id": "url",
+        "type": "url",
+        "label": "URL"
+      },
+      {
+        "id": "urlText",
+        "type": "text",
+        "label": "Button Text",
+        "default": "Shop Now"
+      }
+    ],
     "blocks": [
       {
         "type": "new-arrival",

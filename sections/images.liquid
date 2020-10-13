@@ -1,9 +1,13 @@
-<section class="image-test row">
+<section class="container-fluid">
+  <div class="row">
     {% for block in section.blocks %}
-<a href ="{{ block.settings.image_url }}" class="col-md">
-<img src="{{ block.settings.image | img_url:'master' }}" class="img-fluid" alt="Responsive image">
-</a>
-{% endfor %}
+      <a href ="{{ block.settings.image_url }}" class="col-md">
+       <img data-src="{{ block.settings.image | img_url:'master' }}" src="data:image/svg+xml,%3Csvg 
+       xmlns='http://www.w3.org/2000/svg' 
+       viewBox='0 0 3 2'%3E%3C/svg%3E" class="img-fluid lazyload" alt="Responsive image">
+      </a>
+    {% endfor %}
+  </div>
 </section>
 {% schema %}
   {

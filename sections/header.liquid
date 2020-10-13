@@ -13,10 +13,12 @@
 <section data-section-id="{{ section.id }}" data-section-type="header">
 
   <header>
-    
+    {%comment%}
     {% include 'navbar' %}
+{%endcomment%}
 
-   
+    {% include 'navbar-new' %}
+
   </header>
   
 
@@ -34,6 +36,7 @@
 {% schema %}
   {
     "name": "Header",
+    "class": "sticky-header",
     "settings": [
       {
         "type": "header",

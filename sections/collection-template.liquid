@@ -2,226 +2,160 @@
 <div id="pages" style="display:none;">{{paginate.pages}}</div>
 {% assign productCount = collection.all_products_count | minus: paginate.current_offset %}
 
-  <div class="{%if section.settings.is_full_width %} container-fluid {%else%} container {%endif%} ">
+<div class="{%if section.settings.is_full_width %} container-fluid {%else%} container-fluid {%endif%} ">
 
-        <header role="banner" 
-                class="d-flex align-items-center" 
-                style="min-height: {{section.settings.header_height}}px;">
-            <div class="w-100">
-              <h1 class="text-{{section.settings.header_align}}">{{ collection.title }}</h1>
-              {% if collection.description != blank %}
-                <div class="text-{{section.settings.header_align}} ">
-                  {{ collection.description }}
-                </div>
-              {% endif %}
+  <header role="banner" class="d-flex align-items-center" style="min-height: {{section.settings.header_height}}px;">
+    <div class="w-100">
+      <h1 class="text-{{section.settings.header_align}}">{{ collection.title }}</h1>
+      {% if collection.description != blank %}
+      <div class="text-{{section.settings.header_align}} ">
+        {{ collection.description }}
+      </div>
+      {% endif %}
+    </div>
+  </header>
+  <div class="row">
+    <p id="loop"></p>
+    <nav class="navbar navbar-expand-lg bg-black w-100 sticky-filter">
+      <div class="destop-display w-100">
+        {% include 'desktop-collection-filter' %}
+      </div>
+      <div class="mobile-display">
+        {% include 'mobile-sidebar-collection-nav'%}
+      </div>
+    </nav>
+
+
+
+
+    <div class="col-md-12">
+      <div class="row" id="Containerdemo">
+        {% for product in collection.products %}
+        <div class="col-five col-50 mix {% for tag in product.tags %}{{ tag | handleize | split: ' ' }} {% endfor %} ">
+          {% if product.featured_image != blank %}
+
+          <div class="reveal lazy-padding">
+            <div id="mobileQuickBuy" class="mobile-display mobile-quickbuy">
+              <div id="mobileAddToCartIcon">
+                {% include 'icon-circle-plus'%}
+              </div>
             </div>
-        </header>
-      
-        <div class="row">
-          <p id="loop"></p>
-                
-                
-                
-
-
-
-              <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-                  <div class="col-3">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        COLLECTION
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".emerge">EMERGE</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".shine">SHINE</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".train-n-run">TRAIN-N-RUN</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".revive">REVIVE</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".ease">EASE</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".chromatic">CHROMATIC</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".collegiate">COLLEGIATE</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".hyper-onyx">HYPER-ONYX</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".electric">ELECTRIC</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".airfit">AIRFIT</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".camo">CAMO</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".eclipse">ECLIPSE</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-3">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        STYLE
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".bottoms">Bottoms</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".shorts">Shorts</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".joggers-pants">Joggers & Pants</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".leggings-tights">Leggings & Tights</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".capris-crops">Capris & Crops</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".tops">Tops</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".hoodies-sweatshirts-jackets">Hoodies-Sweatshirts & Jackets</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".tank-tops-sleeveless">Tank Tops & Sleeveless</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".sports-bras">Sports Bras</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".crop-tops">Crop Tops</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".long-sleeves">Long Sleeves</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".short-sleeves">Short Sleeves</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-3">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        SIZE
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".in-stock-xsmall">XSmall</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".in-stock-small">Small</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".in-stock-medium">Medium</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".in-stock-large">Large</button>
-                        <button class="dropdown-item" type="button" mixitup-control data-toggle=".in-stock-xlarge">XLarge</button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-3">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        COLOR
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".black" style="background: rgb(0, 0, 0);"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".white" style="border: 1px solid black;"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".gray" style="background: rgb(128, 128, 128)"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".blue" style="background: rgb(1, 0, 205);"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".red" style="background: rgb(255, 0, 0);"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".green" style="background: rgb(0, 128, 0)"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".yellow" style="background: rgb(255, 255, 2)"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".purple" style="background: rgb(148, 0, 211)"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".brown" style="background: rgb(140, 69, 20)"></button>
-                        <button class="dropdown-item colorContainer" type="button" mixitup-control data-toggle=".pink" style="background: rgb(255, 105, 181)"></button>
-                      </div>
-                    </div>
-                  </div>
-                  <button type="button" data-reset mixitup-control data-filter="all">Reset</button>
-                </div>
-              </nav>
-            <div class="col-md-12">
-                <div class="row" id="Containerdemo">
-
-
-                    {% for product in collection.products %}
-                    <div class="col-md-3 mix {% for tag in product.tags %}{{ tag | handleize | split: ' ' }} {% endfor %} ">
-
-                  
-                            {% if product.featured_image != blank %}
-                              <a href="{{ product.url }}">
-                                  <img data-src="{{ product.featured_image | img_url:'300x'}}"
-                                      alt="" class="img-fluid lazyload">
-                              </a>
-                            {% endif %}
-                            <p>
-                              <a href="{{ product.url }}">{{ product.title }}</a>
-                            </p>
-                  
-                            {% include 'product-price' %}
-                          
-                        </div>
-                  
-                      {% endfor %}
-                      
-                    </div>
-
-
-<!--                     <div class="mixitup-page-list"></div> -->
-                  </div>
-                </div>
-                
+            <a href="{{ product.url }}">
+              <img data-src="{{ product.featured_image | img_url:'master'}}" alt=""
+                class="img-fluid lazyload product-collection-image lazy-absolute">
+            </a>
+            <div id="quickBuy">
+              {% include 'quickbuy-container' %}
             </div>
+            <a href="{{ product.url }}" oncontextmenu="return false" >
+              <div class="hidden">
+                {% if product.images[2].alt contains 'vimeo' %}
+                <video playsinline oncontextmenu="return false" preload="metadata" id="portfolio-vid" class="hidden img-fluid lazy-hover">
+                  <source data-src="{{ product.images[2].alt}}">
+                </video>
+                {% else %}
+                <img data-src="{{ product.images[1] | img_url:'master'}}" alt="" class="hidden img-fluid lazy-hover">
+                {% endif %}
+              </div>
+            </a>
+          </div>
+          </a>
+          {% endif %}
 
+          <div>
+            <a href="{{ product.url }}">{{ product.title }}</a>
+          </div>
+          <div>
+            {% for product_option in product.options_with_values %}{% if product_option.name == 'Color' %}{{ product_option.values.first }}{% endif %}{% endfor %}
+          </div>
+          {% include 'product-price' %}
         </div>
-
-
+        {% endfor %}
+      </div>
+      <!--                     <div class="mixitup-page-list"></div> -->
+    </div>
   </div>
 
+</div>
 
-  {% endpaginate %}
+</div>
+
+
+</div>
+
+
+{% endpaginate %}
 
 {% schema %}
-  {
-    "name": "Collection",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Collection header"
-      },
-      {
-        "type": "checkbox",
-        "id": "is_full_width",
-        "label": "Full width",
-        "default": false
-      },
-      {
-        "type": "select",
-        "id": "header_align",
-        "options": [
-            { 
-              "value": "right", 
-              "label": "Text right"
-            },
-            { 
-              "value": "center", 
-              "label": "Text center"
-            },
-            { 
-              "value": "left", 
-              "label": "Text left"
-            }
-        ],
-        "label": "Header alignment",
-        "default": "left"
-      },
-      {
-        "type":      "range",
-        "id":        "header_height",
-        "min":       50,
-        "max":        500,
-        "step":       5,
-        "unit":       "px",
-        "label":     "Header height",
-        "default":   120
-      },
-      {
-        "type": "header",
-        "content": "Sidebar"
-      },
-      {
-        "type": "link_list",
-        "id": "collection_nav",
-        "label": "Navigation",
-        "info": "Select custom menu nav for sidebar"
-      },
-      {
-        "type": "checkbox",
-        "id": "hide_tags",
-        "label": "Hide tags",
-        "default": false,
-        "info": "Hide tags from sidebar"
-      },
-      {
-        "type": "header",
-        "content": "Others"
-      },
-      {
-        "type": "paragraph",
-        "content": "You can add more settings here :) "
-      }
-    ]
-  
-  }
+{
+"name": "Collection",
+"settings": [
+{
+"type": "header",
+"content": "Collection header"
+},
+{
+"type": "checkbox",
+"id": "is_full_width",
+"label": "Full width",
+"default": false
+},
+{
+"type": "select",
+"id": "header_align",
+"options": [
+{
+"value": "right",
+"label": "Text right"
+},
+{
+"value": "center",
+"label": "Text center"
+},
+{
+"value": "left",
+"label": "Text left"
+}
+],
+"label": "Header alignment",
+"default": "left"
+},
+{
+"type": "range",
+"id": "header_height",
+"min": 50,
+"max": 500,
+"step": 5,
+"unit": "px",
+"label": "Header height",
+"default": 120
+},
+{
+"type": "header",
+"content": "Sidebar"
+},
+{
+"type": "link_list",
+"id": "collection_nav",
+"label": "Navigation",
+"info": "Select custom menu nav for sidebar"
+},
+{
+"type": "checkbox",
+"id": "hide_tags",
+"label": "Hide tags",
+"default": false,
+"info": "Hide tags from sidebar"
+},
+{
+"type": "header",
+"content": "Others"
+},
+{
+"type": "paragraph",
+"content": "You can add more settings here :) "
+}
+]
+
+}
 {% endschema %}

@@ -1,16 +1,25 @@
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+$enable-caret: false;
+@import "~bootstrap/scss/bootstrap";
 
-@import '~slick-carousel/slick/slick.css';
+@import "~slick-carousel/slick/slick.css";
 
-@import './mini-cart.scss';
+@import "./header.scss";
+
+@import "./homepage.scss";
+
+@import "./footer.scss";
+
+@import "./mini-cart.scss";
 
 @import "~noty/src/noty.scss";
+
 @import "~noty/src/themes/mint.scss";
 
-@import './product-page.scss';
+@import "./product-page.scss";
 
-@import './collection-page.scss';
+@import "./collection-page.scss";
 
-@import './sliders.scss';
+@import "./sliders.scss";
 
+@import "./tabbar.scss";

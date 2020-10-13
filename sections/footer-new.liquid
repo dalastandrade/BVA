@@ -1,0 +1,67 @@
+
+<footer>
+    <div class="container">
+      <div class="col-4">
+        <div class="emailFooter" style="padding: 0">
+          <img src="//cdn.shopify.com/s/files/1/2665/0346/t/239/assets/redefine-logo.png?v=5790812699384569507"
+            style="width:200px;margin-bottom:10px;">
+          <div class="footer-sub" style="font-size:.75em">
+            Subsribe to our newsletter
+          </div>
+          <div class="footer-email">
+            <a href="javascript:void(0);" onclick="openModal();">
+              <label>
+                <input class="" name="footeremailtext" type="email" autocomplete="off" id="clickme2" readonly="readonly"
+                placeholder="What's your email?">
+                <svg viewBox="0 0 100 100" class="input-arrow"><path class="arrow" d="M 25,0 L 30,5 L 10,25 L 30,45 L 25,50 L 0,25 Z  " transform="translate(70,80) rotate(180) "></path></svg>
+              </label>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-4">
+      </div>
+      <div class="col-4">
+        {%- assign footer_linklist = section.settings.footer_linklist -%}
+        {% if linklists[footer_linklist].links.size > 0 %}
+        <ul class="nav justify-content-center">
+          {% for link in linklists[footer_linklist].links %}
+          <li class="nav-item">
+            <a href="{{ link.url }}" class="nav-link active">{{ link.title }}</a>
+            {% for childlink in link.links %}
+            <a href="{{ childlink.url }}" class="dropdown-item">
+              {{ childlink.title }}
+            </a>
+            {% endfor %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+    <div class="text-center">
+      <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}.
+        {{ powered_by_link }}</small>
+    </div>  
+  </footer>
+  
+  {% schema %}
+  {
+  "name": "Footer",
+  "settings": [
+  {
+  "type": "link_list",
+  "id": "footer_linklist",
+  "label": "First menu",
+  "default": "footer"
+  },
+  {
+  "type": "checkbox",
+  "id": "show_payment_icons",
+  "label": "Show payment icons",
+  "default": false
+  }
+  ]
+  }
+  
+  {% endschema %}

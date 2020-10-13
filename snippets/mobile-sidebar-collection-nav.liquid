@@ -1,0 +1,18 @@
+<div class="page-wrapper-collection">
+    <a id="show-collection-nav">
+       COLLECTION FILTER
+    </a>
+    <nav class="sidebar-wrapper-collection" onclick="loadAllProducts()">
+        <div class="sidebar-content">
+            <div class="sidebar-header-container">
+                <a class="sidebar-header-title" href="#">Help Center</a>
+                <div id="close-collection-nav">
+                    {% include 'icon-close'%}
+                </div>
+            </div>
+            <ul id="collectionMenu">
+                {% include 'mobile-collection-filter' %}
+            </ul>
+        </div>
+    </nav>
+</div>

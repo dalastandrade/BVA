@@ -57,10 +57,15 @@
 
 </head>
 
-<body id="{{ page_title | handle }}" class="template-{{ template.name | handle }}">
-
+<body id="tlf" class="template-{{ template.name | handle }}">
+  <div id="cookieConsent">
+    <p>This website uses cookies to ensure you get the best experience on our website.</p>&nbsp;
+    <a href="#" target="_blank">Learn more.</a><a class="cookieConsentOK">Accept</a>
+</div>
   <a class="in-page-link sr-only" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
-
+  {% if template contains 'index' or 'product' or 'collection' %}
+  {% render 'announcement-bar' %}
+  {% endif %}
   {% section 'header' %}
 
   <main>

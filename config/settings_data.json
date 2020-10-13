@@ -42,16 +42,18 @@
           "announcement_bar_home_page_only": true,
           "announcement_bar_text": "Announce something here",
           "announcement_bar_link": "",
-          "logo": "",
-          "logo_max_width": 100,
+          "logo": "shopify:\/\/shop_images\/TLF-MainLogo-Black-320px_231x_100x_93950b01-e28e-490f-b83d-6346d4ff1e55.png",
+          "logo_max_width": 70,
           "menu": "main-menu"
         }
       },
       "footer": {
         "type": "footer",
         "settings": {
-          "footer_linklist": "footer",
-          "show_payment_icons": false
+          "footer_linklist_one": "footer",
+          "footer_linklist_two": "about-tlf",
+          "footer_linklist_three": "help",
+          "footer_linklist_four": ""
         }
       },
       "1597327352945": {

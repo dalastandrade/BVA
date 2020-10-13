@@ -1,0 +1,25 @@
+.sticky-tabbar {
+    position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        overflow: unset;
+        z-index: 9;
+        background: white;
+    }
+    
+    .row-new {
+        display: flex;
+    }
+    
+    .navbar.mobile-icons {
+        width: 100%;
+        box-shadow:  0 4px 2px -2px gray;
+        z-index: 100;
+        padding-bottom: 10px;
+    }
+    
+    .col.tabbar-icons {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }

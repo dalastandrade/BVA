@@ -1,0 +1,39 @@
+<section data-section-id="{{ section.id }}" data-section-type="mobile-tabbar">
+    <div class="mobile-display">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white footer" id="tabbar">
+        <div class="container-fluid">
+            <div class="row w-100">
+                <div class="col tabbar-icons">
+                    <div class="dropup" id="mobileCustomerAccount">
+                    </div>
+                </div>
+                <div class="col tabbar-icons">
+                    <div class="dropup" id="mobileWishlist">
+                    </div>
+                </div>
+                <div class="col tabbar-icons">
+                    <div class="dropup" id="mobileSearch">
+                    </div>
+                </div>
+                <div class="col tabbar-icons">
+                    <div class="dropup" id="mobileCart">
+                    </div>
+                </div>         
+                <div class="col tabbar-icons">
+                    <div class="dropup">
+                        {%include 'chat-text-email' %}
+                    </div>
+                </div>         
+            </div>
+        </div>
+    </nav>
+</div>
+</section>
+
+
+{% schema %}
+{
+"name": "Tabar",
+"class": "sticky-tabbar"
+}
+{% endschema %}

@@ -1,100 +1,179 @@
-
 h2.product-category {
-    font-weight: bold;
-    color: grey;
-    margin: 10px 0px;
-    font-size: 1em;
-    line-height: 0px;
-    text-transform: uppercase;
+  font-weight: bold;
+  color: grey;
+  margin: 10px 0px;
+  font-size: 1em;
+  line-height: 1em;
+  text-transform: uppercase;
 }
 
 .prev-next-button {
-    position: absolute;
-    top: 50%;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: white;
-    transform: translateY(-50%);
-  }
-  
-  .previous { left: 10px; }
-  .next { right: 10px; }
-  
-  .prev-next-button svg {
-    position: absolute;
-    left: 20%;
-    top: 20%;
-    width: 60%;
-    height: 60%;
-  }
-  
-  .arrow { fill: #333; }
-  
-  
-  /* smaller, dark, rounded square */
-  
-  .swatch-slider {
-    margin: 0px 20px 10px 20px;
-    background: #fff;
-    position: relative;
-    padding-left:0;
-  }
-  
-  .swatch-slider .prev-next-button {
-    width: 20px;
-    height: 100%;
-    background: #333;
-    border-radius: 0px;
-  }
-  
-  .swatch-slider .prev-next-button.previous { left: -20px; }
-  .swatch-slider .prev-next-button.next { right: -20px; }
-  
-  .swatch-slider .arrow { fill: white; }
-  
-  .swatch-gallery {
-    padding: 0 10px;
-    height: 84px;
-    position: relative;
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: white;
+  transform: translateY(-50%);
+}
+
+.previous {
+  left: 10px;
+}
+.next {
+  right: 10px;
+}
+
+.prev-next-button svg {
+  position: absolute;
+  left: 20%;
+  top: 20%;
+  width: 60%;
+  height: 60%;
+}
+
+.arrow {
+  fill: #333;
+}
+
+/* smaller, dark, rounded square */
+
+.swatch-slider.slick-initialized.slick-slider {
+  margin: 0px 20px 10px 20px;
+}
+
+.swatch-slider {
+  background: #fff;
+  position: relative;
+  padding-left: 0;
+}
+
+.swatch-slider .prev-next-button {
+  width: 20px;
+  height: 100%;
+  background: #333;
+  border-radius: 0px;
+}
+
+.swatch-slider .prev-next-button.previous {
+  left: -20px;
+}
+.swatch-slider .prev-next-button.next {
+  right: -20px;
+}
+
+.swatch-slider .arrow {
+  fill: white;
+}
+
+.swatch-gallery {
+  padding: 0 10px;
+  height: 84px;
+  position: relative;
 }
 
 .ml-pl-zero {
-    margin-left: 0;
-    padding-left: 0;
+  margin-left: 0;
+  padding-left: 0;
 }
 
 .size-labels {
-    position: relative;
-    display: inline-block;
-    line-height: 1;
-    font-weight: normal;
-    padding: 7px 15px 7px;
-    margin: 0 8px 12px 0;
-    font-style: normal;
-    font-size: 16px;
-    text-transform: none;
-    background-color: #fff;
-    box-shadow: 0 0 0 1px #adadad;
-    letter-spacing: 0.025em;
-    line-height: 1.6;
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
+  line-height: 1;
+  font-weight: normal;
+  padding: 7px 15px 7px;
+  margin: 0 8px 12px 0;
+  font-style: normal;
+  font-size: 16px;
+  text-transform: none;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px #adadad;
+  letter-spacing: 0.025em;
+  line-height: 1.6;
+  cursor: pointer;
 }
 
 input:checked + label {
-    background: black;
-    color: white;
+  background: black;
+  color: white;
+  border: 1px solid black;
+  box-shadow: none;
 }
 
 button#productAddToCart {
-    width: 100%;
+  width: 100%;
 }
 
 .my-2 {
-    font-size: 1.5em;
+  font-size: 1.5em;
 }
 
-input[type=radio]:disabled + label.size-labels {
-    background: #dddddd;
-    color: #757575;
+input[type="radio"]:disabled + label.size-labels {
+  background: #dddddd;
+  color: #757575;
+}
+
+.product-sticky {
+  padding-top: 80px;
+}
+
+.container.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0px;
+  background: white;
+}
+
+.accordian h5 {
+  padding: 24px 0;
+  border-bottom: 1px solid #e8e8e1;
+  font-size: 0.8em;
+  height: 60px;
+  margin: unset;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.accordian p {
+  font-size: 0.85em;
+  margin-top: 20px;
+}
+
+.accordian h5 span {
+  float: right;
+}
+
+.rte a:not(.rte__image) {
+  border-bottom: none;
+}
+
+strong {
+  font-size: 1em;
+}
+
+.rte > div {
+  margin-bottom: 0;
+}
+
+.collapsible-trigger-btn--borders {
+  border-top: none;
+}
+
+@media screen and (max-width: 768px) {
+  #productheader {
+    font-size: 1.3em;
+  }
+
+  .product-sticky {
+    padding-top: 20px !important;
+  }
+
+  h2.product-category {
+    font-size: 0.9em;
+  }
+
+  .col-md-5.mobile {
+    padding: 0;
+  }
 }

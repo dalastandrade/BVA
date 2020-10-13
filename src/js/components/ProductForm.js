@@ -36,12 +36,14 @@ if (document.querySelector('.shopify-product-form')) {
                             }
                             // open mini cart
                             // $('.mini-cart').dropdown('show');
-
+                            this.onCartOpen();
                             this.closeMiniCart();
+                            $('#overlay').addClass('block-display');
+                            $('#tlf').css('overflow', 'hidden');
 
                         new Noty({
                             type: 'success',
-                            timeout: 3000,
+                            timeout: 1500,
                             layout: 'topRight',
                             text: 'Product added to cart!'
                         }).show();
@@ -57,6 +59,10 @@ if (document.querySelector('.shopify-product-form')) {
                     });
             },
 
+            onCartOpen() {
+                $(".page-wrapper-drawer").addClass("toggled");
+                },
+
             closeMiniCart(){
                 // fix for boostrap dropdown javascript opening and closing
                 $('.mini-cart').addClass('show');
@@ -70,3 +76,5 @@ if (document.querySelector('.shopify-product-form')) {
 
     
 }
+
+
