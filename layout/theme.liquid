@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="{{ settings.color_accent }}">
   <link rel="canonical" href="{{ canonical_url }}">
+  
 
   {%- if settings.favicon != blank -%}
     <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
@@ -63,9 +64,7 @@
     <a href="#" target="_blank">Learn more.</a><a class="cookieConsentOK">Accept</a>
 </div>
   <a class="in-page-link sr-only" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
-  {% if template contains 'index' or 'product' or 'collection' %}
-  {% render 'announcement-bar' %}
-  {% endif %}
+
   {% section 'header' %}
 
   <main>

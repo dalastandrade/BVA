@@ -42,7 +42,7 @@
         {% endif %}
         {% endfor %}
         <li>
-          <a href="/pages/order-lookup" class="parent">
+          <a href="#" class="parent">
             ORDER LOOKUP
           </a>
         </li>
@@ -54,19 +54,19 @@
           <ul>
 
             <li>
-              <a href="tel:561-206-6034" class="parent child-title">
+              <a href="#" class="parent child-title">
                 Call
                 <span>{% include 'icon-phone'%}</span>
               </a>
             </li>
             <li>
-              <a href="/pages/order-lookup" class="parent child-title">
+              <a href="#" class="parent child-title">
                 Email
                 <span>{% include 'icon-email'%}</span>
               </a>
             </li>
             <li>
-              <a href="javascript:$zopim.livechat.window.show();" class="parent child-title">
+              <a href="#" class="parent child-title">
                 LiveChat
                 <span>{% include 'icon-chat' %}</span>
               </a>
@@ -74,8 +74,9 @@
           </ul>
         </li>
 
-        {% include 'social-media-icons' %}
-
+            {% comment %}
+            {% include 'social-media-icons' %}
+            {% endcomment %}
       </ul>
     </div>
   </nav>

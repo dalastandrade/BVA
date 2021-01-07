@@ -1,7 +1,6 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 footer-style footer-gray">
-            {% include 'icon-redefine-impossible'%}
             <div class="footer-email">
                 <label>
                     Subsribe to our newsletter
@@ -14,7 +13,10 @@
                     </div>
                 </a>
             </div>
+            {% comment %}
             {% include 'social-media-icons' %}
+            {% endcomment %}
+
         </div>
         <div class="col-md-6 align-right footer-style footer-gray">
             {% for link in linklists[section.settings.footer_linklist_1].links %}
@@ -51,11 +53,10 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-6 left">
-            <small>&copy; {{ 'now' | date: "%Y" }} All Rights Reserved | <b>Take Life Further</b> | Redefine
-                Impossible.</small>
+            <small>&copy; {{ 'now' | date: "%Y" }} All Rights Reserved | <b>Company Name</b> | Company Tag Line.</small>
         </div>
         <div class="col-md-6 right">
-            <small><a href="/pages/privacy-policy">Privacy Policy</a> | <a href="/pages/terms-conditions">Terms and
+            <small><a href="#">Privacy Policy</a> | <a href="#">Terms and
                     Conditions</a></small>
         </div>
     </div>

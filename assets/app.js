@@ -17178,8 +17178,6 @@ return jQuery;
 } );
 
 
-
-
 /***/ }),
 
 /***/ "./node_modules/lazysizes/lazysizes.js":
@@ -54008,7 +54006,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_cartData_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../shared/cartData.js */ "./src/js/shared/cartData.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -54041,7 +54039,7 @@ if (document.querySelector('.cart-form')) {
       },
       updateCart: function updateCart() {
         var result = this.cart.items.reduce(function (accumulator, target) {
-          return _objectSpread({}, accumulator, _defineProperty({}, target.variant_id, target.quantity));
+          return _objectSpread(_objectSpread({}, accumulator), {}, _defineProperty({}, target.variant_id, target.quantity));
         }, {});
         console.log(result);
         axios.post('/cart/update.js', {
@@ -54838,7 +54836,7 @@ if (window.location.href.indexOf("collection") > -1) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 /**!
  * MixItUp Pagination v3.3.0
@@ -56718,8 +56716,8 @@ var store = {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Rigi\Desktop\Development\starter\src\js\app.js */"./src/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Rigi\Desktop\Development\starter\src\scss\app.scss */"./src/scss/app.scss");
+__webpack_require__(/*! C:\Users\Rigi\Desktop\Development\BVA\Shop-Basic-11-23-20\src\js\app.js */"./src/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Rigi\Desktop\Development\BVA\Shop-Basic-11-23-20\src\scss\app.scss */"./src/scss/app.scss");
 
 
 /***/ })

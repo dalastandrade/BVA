@@ -14,7 +14,10 @@
         </div>
         <div class="col-sm-12 footer-style">
             <div class="footer-sub">
+                {% comment %}
                 {% include 'icon-redefine-impossible'%}
+                {% endcomment %}
+
             </div>
         </div>
         <ul id="footerMenu" class="col-12 footer-style footer-gray">
@@ -40,11 +43,13 @@
     </div>
 </div>
 <div class="text-center">
+    {% comment %}
     {% include 'social-media-icons' %}
+    {% endcomment %}
     <div class="page-width default-margin">
-    
-        <p class="footer-text-mobile">&copy; {{ 'now' | date: "%Y" }} All Rights Reserved.</p>    
-        <p class="footer-text-mobile"><b>Take Life Further</b></p>   
-        <p class="footer-text-mobile"><a href="/pages/privacy-policy">Privacy Policy</a>  | <a href="/pages/terms-conditions">Terms and Conditions</a></p>
-      </div>
+
+        <p class="footer-text-mobile">&copy; {{ 'now' | date: "%Y" }} All Rights Reserved.</p>
+        <p class="footer-text-mobile"><b>Company Name</b></p>
+        <p class="footer-text-mobile"><a href="#">Privacy Policy</a> | <a href="#">Terms and Conditions</a></p>
+    </div>
 </div>

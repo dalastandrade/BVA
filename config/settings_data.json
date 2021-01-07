@@ -41,202 +41,56 @@
           "announcement_bar_enabled": false,
           "announcement_bar_home_page_only": true,
           "announcement_bar_text": "Announce something here",
-          "announcement_bar_link": "",
-          "logo": "shopify:\/\/shop_images\/TLF-MainLogo-Black-320px_231x_100x_93950b01-e28e-490f-b83d-6346d4ff1e55.png",
           "logo_max_width": 70,
-          "menu": "main-menu"
+          "menu": ""
         }
       },
       "footer": {
         "type": "footer",
         "settings": {
-          "footer_linklist_one": "footer",
-          "footer_linklist_two": "about-tlf",
-          "footer_linklist_three": "help",
-          "footer_linklist_four": ""
+          "footer_linklist_1": "footer",
+          "footer_linklist_2": "footer",
+          "footer_linklist_3": "footer",
+          "footer_linklist_4": "footer"
         }
       },
       "1597327352945": {
         "type": "hero-image",
         "settings": {
-          "image": "shopify:\/\/shop_images\/Emerge-Collection-Banner-New.jpg",
+          "image": "shopify:\/\/shop_images\/hero_img.jpg",
           "image_url": "\/collections\/all-products\/womens",
-          "mobile_image": "shopify:\/\/shop_images\/mobile-Emerge-Banner-New-2blue.jpg"
+          "mobile_image": "shopify:\/\/shop_images\/mobile_hero_img.jpg",
+          "header_text": "Hero Image",
+          "paragraph_text": "In lorem leo, sodales et ullamcorper tempor, facilisis id nibh. Maecenas nibh risus, rutrum nec tellus sed, pharetra gravida nulla. Proin imperdiet",
+          "text_align": "hero_text_center"
         }
       },
       "1597327374240": {
         "type": "hero-image",
         "settings": {
-          "image": "shopify:\/\/shop_images\/NEW-AIR-FLEX-BANNER-2.jpg",
+          "image": "shopify:\/\/shop_images\/hero_img.jpg",
           "image_url": "\/collections\/all-products\/mens",
-          "mobile_image": "shopify:\/\/shop_images\/NEW-AIR-FLEX-BANNER-MOBILE.jpg"
+          "mobile_image": "shopify:\/\/shop_images\/mobile_hero_img.jpg",
+          "header_text": "Hero Image",
+          "paragraph_text": "In lorem leo, sodales et ullamcorper tempor, facilisis id nibh. Maecenas nibh risus, rutrum nec tellus sed, pharetra gravida nulla. Proin imperdiet",
+          "text_align": "hero_text_left"
         }
       },
-      "1597327395462": {
-        "type": "images",
-        "blocks": {
-          "1597327399382": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/v2-Mens-Banner-Home-Page.jpg",
-              "image_url": ""
-            }
-          },
-          "1597327404484": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/v2-Womens-Banner-Home-Page.jpg",
-              "image_url": ""
-            }
-          }
-        },
-        "block_order": [
-          "1597327399382",
-          "1597327404484"
-        ],
-        "settings": {}
-      },
-      "1597327419946": {
-        "type": "images",
-        "blocks": {
-          "1597327422212": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/v2-Mens-Best-Seller-Banner-Home-Page.jpg",
-              "image_url": ""
-            }
-          },
-          "1597327427392": {
-            "type": "image",
-            "settings": {
-              "image": "shopify:\/\/shop_images\/v2-Womens-Best-Seller-Banner-Home-Page.jpg",
-              "image_url": ""
-            }
-          }
-        },
-        "block_order": [
-          "1597327422212",
-          "1597327427392"
-        ],
-        "settings": {}
-      },
-      "1597770361632": {
-        "type": "product-slider",
-        "blocks": {
-          "1597770364533": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-3-4-sleeve-training-t-shirt-turbulence"
-            }
-          },
-          "1597773158335": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-3-4-sleeve-training-t-shirt-black"
-            }
-          },
-          "1597773163978": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-classic-tee-black"
-            }
-          },
-          "1597773167589": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-french-terry-shorts-turbulence"
-            }
-          }
-        },
-        "block_order": [
-          "1597770364533",
-          "1597773158335",
-          "1597773163978",
-          "1597773167589"
-        ],
-        "settings": {}
-      },
-      "1597795400458": {
-        "type": "product-slider",
-        "blocks": {
-          "1597795404953": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-3-4-sleeve-training-t-shirt-crimson"
-            }
-          },
-          "1597795412173": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-classic-tee-sea-spray"
-            }
-          },
-          "1597795416072": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-classic-tee-blue-fog"
-            }
-          },
-          "1597795426124": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-3-4-sleeve-training-t-shirt-black"
-            }
-          }
-        },
-        "block_order": [
-          "1597795404953",
-          "1597795412173",
-          "1597795416072",
-          "1597795426124"
-        ],
-        "settings": {}
-      },
-      "1597795956117": {
-        "type": "product-slider",
-        "blocks": {
-          "1597795963245": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-axis-sports-bra-pewter"
-            }
-          },
-          "1597795979981": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-3-4-sleeve-training-t-shirt-turbulence"
-            }
-          },
-          "1597795985669": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-3-4-sleeve-training-t-shirt-blue-fog"
-            }
-          },
-          "1597795989232": {
-            "type": "new-arrival",
-            "settings": {
-              "product": "tlf-air-flex-3-4-sleeve-training-t-shirt-black"
-            }
-          }
-        },
-        "block_order": [
-          "1597795963245",
-          "1597795979981",
-          "1597795985669",
-          "1597795989232"
-        ],
-        "settings": {}
+      "161003902828a33dcb": {
+        "type": "hero-image",
+        "settings": {
+          "image": "shopify:\/\/shop_images\/hero_img.jpg",
+          "mobile_image": "shopify:\/\/shop_images\/mobile_hero_img.jpg",
+          "header_text": "Hero Image",
+          "paragraph_text": "In lorem leo, sodales et ullamcorper tempor, facilisis id nibh. Maecenas nibh risus, rutrum nec tellus sed, pharetra gravida nulla. Proin imperdiet",
+          "text_align": "hero_text_right"
+        }
       }
     },
     "content_for_index": [
       "1597327352945",
-      "1597770361632",
       "1597327374240",
-      "1597795400458",
-      "1597327395462",
-      "1597327419946",
-      "1597795956117"
+      "161003902828a33dcb"
     ]
   },
   "presets": {

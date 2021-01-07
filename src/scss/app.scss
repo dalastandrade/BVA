@@ -1,5 +1,6 @@
 // Bootstrap
 $enable-caret: false;
+
 @import "~bootstrap/scss/bootstrap";
 
 @import "~slick-carousel/slick/slick.css";
@@ -23,3 +24,5 @@ $enable-caret: false;
 @import "./sliders.scss";
 
 @import "./tabbar.scss";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,700');

@@ -1,21 +1,29 @@
-
 <section>
   <a href="{{ section.settings.image_url }}">
-    <div class="desktop-display lazy-padding-desktop-banner">
-      <img
-        data-srcset="{{ section.settings.image | img_url:'1200x' }} 1200w, {{ section.settings.image | img_url:'1600x' }} 1600w"
-        src="data:image/svg+xml,%3Csvg 
+    <div class="hero_image">
+      <div class="desktop-display lazy-padding-desktop-banner full-width">
+
+        <img
+          data-srcset="{{ section.settings.image | img_url:'1200x' }} 1200w, {{ section.settings.image | img_url:'1600x' }} 1600w, {{ section.settings.image | img_url:'1800x' }} 1800w"
+          src="data:image/svg+xml,%3Csvg 
 xmlns='http://www.w3.org/2000/svg' 
 viewBox='0 0 3 2'%3E%3C/svg%3E" class="img-fluid desktop-display lazyload lazy-absolute" alt="Responsive image">
+      </div>
+      <div class="mobile-display lazy-padding-mobile-banner">
+        <img data-srcset="
+                {{ section.settings.mobile_image |  img_url: '400x' }} 400w,
+                {{ section.settings.mobile_image |  img_url: '640x' }} 640w
+                " src="data:image/svg+xml,%3Csvg 
+  xmlns='http://www.w3.org/2000/svg' 
+  viewBox='0 0 3 2'%3E%3C/svg%3E" class="img-fluid mobile-display lazyload lazy-absolute" alt="Responsive image">
+      </div>
+      <div class="{{ section.settings.text_align }}">
+        <h2 class='hero-header'>{{ section.settings.header_text }} </h2>
+        <p class='hero-text'>{{ section.settings.paragraph_text }}</p>
+        <button class='hero-button'>READ MORE</button>
+      </div>
     </div>
-    <div class="mobile-display lazy-padding-mobile-banner">
-      <img data-srcset="
-              {{ section.settings.mobile_image |  img_url: '400x' }} 400w,
-              {{ section.settings.mobile_image |  img_url: '640x' }} 640w
-              " src="data:image/svg+xml,%3Csvg 
-xmlns='http://www.w3.org/2000/svg' 
-viewBox='0 0 3 2'%3E%3C/svg%3E" class="img-fluid mobile-display lazyload lazy-absolute" alt="Responsive image">
-    </div>
+
   </a>
 </section>
 {% schema %}
@@ -36,7 +44,37 @@ viewBox='0 0 3 2'%3E%3C/svg%3E" class="img-fluid mobile-display lazyload lazy-ab
 "type": "image_picker",
 "id": "mobile_image",
 "label": "Banner Image"
-}
+},
+{
+  "type": "text",
+  "id": "header_text",
+  "label": "Header"
+  },
+  {
+  "type": "textarea",
+  "id": "paragraph_text",
+  "label": "Paragraph Text"
+  },
+  {
+    "type": "select",
+    "id": "text_align",
+    "label": "Text alignment",
+    "default": "hero_text_center",
+    "options": [
+    {
+      "value": "hero_text_center",
+      "label": "Center align"
+    },
+    {
+        "value": "hero_text_right",
+        "label": "Right align"
+      },
+      {
+        "value": "hero_text_left",
+        "label": "Left align"
+      }
+    ]
+  }
 ],
 "presets": [
 {
